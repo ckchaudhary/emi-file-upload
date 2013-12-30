@@ -51,7 +51,6 @@ jQuery(document).ready(function($){
 	success:    function(response) { 
 	    emi_fu.doingajax = false;
 	    $('#frm_emi_fu_uploader').find('input[type="file"]').remove();
-	    console.log( response );
 	    /*
 	     * You should bind your code to following event to process the result of upload 
 	     * and to dislay sucess/error messages.
