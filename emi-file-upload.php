@@ -42,27 +42,30 @@
  * 	jQuery(document).ready(function($){
  * 	    //clear up previous image/resume details and display uploading message 
  * 	    //when user selects a file(or a new file)
- * 	    $( ".user-dp, .user-resume" ).on( "uploadstarted", function( event ){
- * 		$(this).next("div.response").html( "<p class='text-info'>uploading..</p>" );
+ * 	    $( ".user-dp,.user-resume" ).on( "uploadstarted", function( event ){
+ *			if( $(this).next("div.response").length==0 ){
+ *				$(this).after("<div class='response'></div>");
+ *			}
+ *			$(this).next("div.response").html( "<p class='text-info'>uploading..</p>" );
  * 	    });
  * 
  * 	    $( ".user-dp" ).on( "uploadfinished", function( event, response ) {
- * 		if( response.status===true ){
- * 		    //dp uploaded successfuly
- * 		    var html  = "<img src='" + response.message.url + "' height='100' width='100' />";
- * 			html += "<p class='text-success'>Success!</p>";
- * 			html += "<inpu type='hidden' name='user_dp_attachment_id' value='"+ response.message.id +"'/ >";
- * 		    $(this).next("div.response").html( html );
- * 		}
+ *			if( response.status===true ){
+ *				//dp uploaded successfuly
+ *				var html  = "<img src='" + response.message.url + "' height='100' width='100' />";
+ *				html += "<p class='text-success'>Success!</p>";
+ *				html += "<inpu type='hidden' name='user_dp_attachment_id' value='"+ response.message.id +"'/ >";
+ *				$(this).next("div.response").html( html );
+ *			}
  * 	    });
  * 
  * 	    $( ".user-resume" ).on( "uploadfinished", function( event, response ) {
- * 		if( response.status===true ){
- * 		    //dp uploaded successfuly
- * 		    var html  = "<p class='text-success'>Resume uploaded successfuly!</p>";
- * 			html += "<inpu type='hidden' name='user_resume_url' value='"+ response.message.url +"'/ >";
- * 		    $(this).next("div.response").html( html );
- * 		}
+ *			if( response.status===true ){
+ *				//dp uploaded successfuly
+ *				var html  = "<p class='text-success'>Resume uploaded successfuly!</p>";
+ *				html += "<inpu type='hidden' name='user_resume_url' value='"+ response.message.url +"'/ >";
+ *				$(this).next("div.response").html( html );
+ *			}
  * 	    });
  * 	});
  * 	-----------------
