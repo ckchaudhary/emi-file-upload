@@ -17,10 +17,13 @@ jQuery(document).ready(function($){
 	    return false;
 	}
 	emi_fu.trigger = $(this);
-	$('#frm_emi_fu_uploader').append("<input type='file' name='fl_emi_fu' />");
-	$('input[name="fl_emi_fu"]').change(function(){
-	    emi_fu_file_selected();
-	});
+	if( $('#frm_emi_fu_uploader input[name="fl_emi_fu"]').length == 0 ){
+	    $('#frm_emi_fu_uploader').append("<input type='file' name='fl_emi_fu' />");
+	    $('input[name="fl_emi_fu"]').change(function(){
+		emi_fu_file_selected();
+	    });
+	}
+	
 	$('input[name="fl_emi_fu"]').trigger('click');
 	return false;
     });
